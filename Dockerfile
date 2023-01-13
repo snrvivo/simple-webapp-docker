@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 EXPOSE 8081/tcp
 ENV FLASK_PORT=8081
 
-RUN sudo apt-get python3 python3-pip
+RUN apt-get install python python-pip
 
 # Set the working directory in the container
 WORKDIR /projects
@@ -19,4 +19,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Specify the command to run on container start
-CMD [ "python3", "./app.py" ]
+CMD [ "python", "./app.py" ]
