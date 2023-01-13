@@ -1,9 +1,20 @@
-FROM ubuntu:20.04
+FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y python3 python3-pip
+# By default, listen on port 8081
+EXPOSE 8081/tcp
+ENV FLASK_PORT=8081
 
-RUN pip3 install flask 
+# Set the working directory in the container
+WORKDIR /projects
 
-COPY app.py /opt/
+# Copy the dependencies file to the working directory
+COPY requirements.txt .
 
-ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080
+# Install any dependencies
+RUN pip install -r requirements.txt
+
+# Copy the content of the local src directory to the working directory
+COPY . .
+
+# Specify the command to run on container start
+CMD [ "python", "./app.py" ]
