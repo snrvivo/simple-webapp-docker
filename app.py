@@ -1,14 +1,14 @@
-import os
 from flask import Flask
+import os
+
 app = Flask(__name__)
 
-@app.route("/")
-def main():
-    return "Welcome!"
-
-@app.route('/how are you')
+@app.route('/')
 def hello():
-    return 'I am good, how about you?'
+    return "Hello World!"
 
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    port = os.environ.get('FLASK_PORT') or 8080
+    port = int(port)
+
+    app.run(port=port,host='0.0.0.0')
