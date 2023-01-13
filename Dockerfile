@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 # By default, listen on port 8081
 EXPOSE 8081/tcp
