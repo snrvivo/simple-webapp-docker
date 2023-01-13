@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 EXPOSE 8081/tcp
 ENV FLASK_PORT=8081
 
-RUN apt-get install python python-pip
+RUN apt-get install -y python python-pip
 
 # Set the working directory in the container
 WORKDIR /projects
