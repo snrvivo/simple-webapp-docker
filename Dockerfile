@@ -12,9 +12,13 @@ WORKDIR /projects
 # Copy the dependencies file to the working directory
 COPY requirements.txt .
 
+RUN which python
+RUN which pip
+RUN python --version
+RUN pip --version
+
 # Install any dependencies
-RUN pip install --upgrade pip
-RUN pip install flask
+RUN pip install -r requirements.txt
 
 # Copy the content of the local src directory to the working directory
 COPY . .
