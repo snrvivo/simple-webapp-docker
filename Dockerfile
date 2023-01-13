@@ -4,6 +4,8 @@ FROM ubuntu:20.04
 EXPOSE 8081/tcp
 ENV FLASK_PORT=8081
 
+RUN sudo apt-get python3 python3-pip
+
 # Set the working directory in the container
 WORKDIR /projects
 
@@ -11,7 +13,7 @@ WORKDIR /projects
 COPY requirements.txt .
 
 # Install any dependencies
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the content of the local src directory to the working directory
 COPY . .
