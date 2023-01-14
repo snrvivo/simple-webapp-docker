@@ -1,11 +1,12 @@
 from flask import Flask
+import datetime
 import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello Senor Vivo!"
+    return "Hello Senor Vivo! " + str(datetime.datetime.now())
 
 if __name__ == '__main__':
     port = os.environ.get('FLASK_PORT') or 8080
